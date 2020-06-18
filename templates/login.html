@@ -3,4 +3,20 @@
 {% block content %}
 
 <h1>Log in</h1>
+<form action="http://127.0.0.1:5000/login" method = "post">
+
+	<p>
+        {{form.username.label}}
+        {{form.username(size=30)}}
+    </p>
+    <p>
+        {{form.password.label}}
+        {{form.email(size=30)}}
+    </p>
+    <p>
+        {{form.submit}}
+    </p>
+	
+  
+</form>
 {% endblock %}

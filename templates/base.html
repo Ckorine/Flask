@@ -12,7 +12,9 @@
         {% block header %}
         <ul>
             <li><a href="{{ url_for('home_form') }}">Home</a></li>
-            <li><a href="{{ url_for('login_form') }}">Login</a></li>
+            {% if loggedIn %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
         </ul>
         
         {% endblock %}
