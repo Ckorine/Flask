@@ -7,6 +7,7 @@ from mongoengine import connect
 
 from User import User
 from registerForm import register
+from loginForm import loginForm
 
 
 app = Flask(__name__)
@@ -15,12 +16,13 @@ app.config['MONGO_URI'] = "mongodb://localhost:27017/Person"
 app.config['MONGO_DBNAME'] = "Person"
 mongo = PyMongo(app)
 
-loggedIn = True
 
 
+connect('Person',host='localhost',port=27017)
 @app.route('/')
-def index():
- return render_template('base.html')
+def index(): 
+    #loggedIn = True
+    return render_template('base.html')
 
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -65,7 +67,7 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-
+    form = loginForm()
     if request.method == 'POST':
 
         user = mongo.db.user
@@ -75,10 +77,10 @@ def login():
         if login_user:
                     if bcrypt.checkpw(request.form.get('password').encode('utf-8'), login_user['password'].encode('utf-8')):
                         session['email'] = request.form['email']
-                        return render_template('login.html', **'You are logged in as ' + session['email'])
+                        return 'You are logged in as ' + session['email']
 
         return 'Invalid username/password combination'
-       
+    return render_template('login.html', form=form)   
 
 
 # run    
