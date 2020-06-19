@@ -25,11 +25,11 @@
             <a class="nav-link" href="{{ url_for('home_form') }}">Profile</a>
           </li>
         </ul>
-          {% if  loggedIn %}
+          {% if  loggedIn == 'notloggedIn' %}
          <button class="btn btn-outline-success my-2 my-sm-0" ><a href="{{ url_for('login') }}">Login</a></button>
           <button class="btn btn-outline-success my-2 ml-4 my-sm-0" ><a href="{{ url_for('login') }}">Signup</a></button>
         {% endif %}
-      {% if  loggedIn %}
+        {% if  loggedIn == 'loggedIn' %}
       <button class="btn btn-outline-danger my-2 ml-4" ><a href="{{ url_for('login') }}">Logout</a></button>
         {% endif %}
 
