@@ -21,8 +21,8 @@ mongo = PyMongo(app)
 connect('Person',host='localhost',port=27017)
 @app.route('/')
 def index(): 
-    #loggedIn = True
-    return render_template('base.html')
+    loggedIn = 'notloggedIn'
+    return render_template('base.html', loggedIn = loggedIn)
 
 
 @app.route('/home')
@@ -76,7 +76,7 @@ def login():
         if login_user:
                     if bcrypt.checkpw(request.form.get('password').encode('utf-8'), login_user['password'].encode('utf-8')):
                         session['email'] = request.form['email']
-                        loggedIn = None
+                        loggedIn = 'loggedIn'
                         userInfo = {
                             'firstname': login_user['firstname'],
                             'lastname': login_user['lastname'],
