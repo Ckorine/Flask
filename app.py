@@ -83,11 +83,24 @@ def login():
                             'lastname': login_user['lastname'],
                             'email':  login_user['email'],
                         }
-                        return render_template('profil.html', **userInfo)
+                        return render_template('profil.html', **userInfo, loggedIn = loggedIn)
 
         return 'Invalid email/password combination'
-    return render_template('login.html')   
+    return render_template('login.html', form=form)
 
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    form = loginForm()
+    
+    return render_template('login.html', form=form)       
+
+
+#@app.route('/profil', methods=['GET', 'POST'])
+#def logout():
+    
+    
+    
 
 # run    
 
