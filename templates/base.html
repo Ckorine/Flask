@@ -21,9 +21,10 @@
           <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('home') }}">Home</a>
           </li>
+             {% if  loggedIn == 'loggedIn' %}
             <li class="nav-item active">
-            <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
-
+            <a class="nav-link" href="{{ url_for('profil') }}">Profil</a>
+                {% endif %}
           </li>
         </ul>
 

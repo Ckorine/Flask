@@ -3,12 +3,11 @@
 {% block content %}
 <div class="row align-items-center justify-content-center">
     <div class="col-md-12 ">
-        <h1>Register</h1>
         <h1>Profil</h1>
             <ul>
-                <li><strong>Fisrtname:</strong>{{ firstname }}</li>
-                <li><strong>Lastname:</strong>{{ lastname }}</li>
-                <li><strong>Email:</strong>{{ email }}</li>
+                <li><strong>Fisrtname:</strong>{{ userInfo['firstname'] }}</li>
+                <li><strong>Lastname:</strong>{{ userInfo["lastname"] }}</li>
+                <li><strong>Email:</strong>{{ userInfo["email"] }}</li>
             </ul>
     </div>
 </div>
