@@ -23,14 +23,17 @@
           </li>
             <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+
           </li>
         </ul>
+
           {% if  loggedIn == 'notloggedIn' %}
          <button class="btn btn-outline-success my-2 my-sm-0" ><a href="{{ url_for('login') }}">Login</a></button>
           <button class="btn btn-outline-success my-2 ml-4 my-sm-0" ><a href="{{ url_for('signup') }}">Signup</a></button>
         {% endif %}
         {% if  loggedIn == 'loggedIn' %}
       <button class="btn btn-outline-danger my-2 ml-4" ><a href="{{ url_for('logout') }}">Logout</a></button>
+
         {% endif %}
 
       </div>
