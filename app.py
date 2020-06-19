@@ -86,7 +86,7 @@ def login():
                         return render_template('profil.html', **userInfo)
 
         return 'Invalid email/password combination'
-    return render_template('login.html')   
+    return render_template('login.html',form=form)
 
 
 
