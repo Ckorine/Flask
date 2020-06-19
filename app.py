@@ -72,15 +72,21 @@ def login():
 
         user = mongo.db.user
         login_user = user.find_one({'email': request.form.get('email')})
-        loggedIn = None
+        
 
         if login_user:
                     if bcrypt.checkpw(request.form.get('password').encode('utf-8'), login_user['password'].encode('utf-8')):
                         session['email'] = request.form['email']
-                        return 'You are logged in as ' + session['email']
+                        loggedIn = None
+                        userInfo = {
+                            'firstname': login_user['firstname'],
+                            'lastname': login_user['lastname'],
+                            'email':  login_user['email'],
+                        }
+                        return render_template('profil.html', **userInfo)
 
-        return 'Invalid username/password combination'
-    return render_template('login.html', form=form)   
+        return 'Invalid email/password combination'
+    return render_template('login.html')   
 
 
 # run    
